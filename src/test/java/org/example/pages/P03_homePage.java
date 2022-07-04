@@ -13,10 +13,12 @@ public List<WebElement> prices(){
 public WebElement searchBox(){
     return Hooks.driver.findElement(By.id("small-searchterms"));
     }
-    public List<WebElement> searchResults(){
-        return Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]"));
+
+
+
+
+    public WebElement page_title(){
+    return Hooks.driver.findElement(By.cssSelector("div[class=\"page-title\"]"));
     }
-    public WebElement sku(){
-    return Hooks.driver.findElement(By.cssSelector("div[class=\"sku\"]")).findElements(By.xpath("./child::*")).get(1);
-    }
+
 }

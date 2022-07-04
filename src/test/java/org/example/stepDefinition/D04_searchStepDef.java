@@ -28,22 +28,22 @@ public class D04_searchStepDef {
     public void checkResults(String keyword){
         System.out.println(keyword);
         Assert.assertTrue(Hooks.driver.getCurrentUrl().contains("https://demo.nopcommerce.com/search"));
-        int no_of_results=homePage.searchResults().size();
+        int no_of_results=Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]")).size();
         System.out.println(no_of_results);
         for (int i =0;i<no_of_results;i++) {
-            System.out.println(homePage.searchResults().get(i).findElement(By.xpath("./child::*")).getText().toLowerCase());
-            soft.assertTrue(homePage.searchResults().get(i).findElement(By.xpath("./child::*")).getText().toLowerCase().contains(keyword), "not " + keyword);
+            System.out.println(Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]")).get(i).findElement(By.xpath("./child::*")).getText().toLowerCase());
+            soft.assertTrue(Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]")).get(i).findElement(By.xpath("./child::*")).getText().toLowerCase().contains(keyword), "not " + keyword);
         }
         soft.assertAll();
     }
     @And("user click on the product")
     public void clickTheProduct(){
-        homePage.searchResults().get(0).findElement(By.xpath("./child::*")).click();
+        Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]")).get(0).findElement(By.xpath("./child::*")).click();
     }
     @Then("^result should have the same \"(.*)\"$")
     public void checkTheResult(String sku){
-        System.out.println(homePage.sku().getText());
-        soft.assertTrue(homePage.sku().getText().contains(sku));
+        System.out.println(Hooks.driver.findElement(By.cssSelector("div[class=\"sku\"]")).findElements(By.xpath("./child::*")).get(1).getText());
+        soft.assertTrue(Hooks.driver.findElement(By.cssSelector("div[class=\"sku\"]")).findElements(By.xpath("./child::*")).get(1).getText().contains(sku));
         soft.assertAll();
     }
 
