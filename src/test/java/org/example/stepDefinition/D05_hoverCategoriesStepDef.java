@@ -14,18 +14,18 @@ public class D05_hoverCategoriesStepDef {
     Actions action=new Actions(Hooks.driver);
     @Given("user hover on category")
     public void hover() throws InterruptedException {
-        action.moveToElement(Hooks.driver.findElement(By.cssSelector("ul[class=\"top-menu notmobile\"] a[href=\"/computers\"]"))).perform();
+        action.moveToElement(homePage.computer_category()).perform();
         Thread.sleep(1000);
     }
     @When("user select a subcategory")
     public void select_subcategory(){
-        subcategory_name = Hooks.driver.findElement(By.cssSelector("a[href=\"/desktops\"]")).getText().toLowerCase().trim();
+        subcategory_name = homePage.desktops_subcategory().getText().toLowerCase().trim();
         Hooks.driver.findElement(By.cssSelector("a[href=\"/desktops\"]")).click();
     }
     @Then("page title should contain the name of the subcategory")
     public void checkPageTitle(){
         Assert.assertTrue(Hooks.driver.getCurrentUrl().contains("desktops"),"wrong URL");
-        System.out.println(Hooks.driver.findElement(By.cssSelector("div[class=\"page-title\"]")).getText());
-        Assert.assertTrue(Hooks.driver.findElement(By.cssSelector("div[class=\"page-title\"]")).getText().toLowerCase().contains(subcategory_name),"wrong Title");
+        System.out.println(homePage.page_title().getText());
+        Assert.assertTrue(homePage.page_title().getText().toLowerCase().contains(subcategory_name),"wrong Title");
     }
 }
