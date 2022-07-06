@@ -34,4 +34,16 @@ public class P03_homePage {
     public WebElement second_slider_selector(){
         return Hooks.driver.findElement(By.cssSelector("a[rel=\"1\"]"));
     }
+    public WebElement facebook_page(){
+        return Hooks.driver.findElement(By.cssSelector("a[href=\"http://www.facebook.com/nopCommerce\"]"));
+    }
+    public WebElement twitter_page(){
+        return Hooks.driver.findElement(By.cssSelector("a[href=\"https://twitter.com/nopCommerce\"]"));
+    }
+    public WebElement rss_page(){
+        return Hooks.driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]"));
+    }
+    public WebElement youtube_page(){
+        return Hooks.driver.findElement(By.cssSelector("a[href=\"http://www.youtube.com/user/nopCommerce\"]"));
+    }
 }
