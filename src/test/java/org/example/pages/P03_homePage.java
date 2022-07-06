@@ -46,4 +46,16 @@ public class P03_homePage {
     public WebElement youtube_page(){
         return Hooks.driver.findElement(By.cssSelector("a[href=\"http://www.youtube.com/user/nopCommerce\"]"));
     }
+    public List<WebElement> wishlistButtons(){
+        return Hooks.driver.findElements(By.className("add-to-wishlist-button"));
+    }
+    public WebElement success_bar(){
+        return Hooks.driver.findElement(By.cssSelector("div[class=\"bar-notification success\"]"));
+    }
+    public WebElement wishlist(){
+        return Hooks.driver.findElement(By.cssSelector("span[class=\"wishlist-label\"]"));
+    }
+    public WebElement item_count(){
+        return Hooks.driver.findElement(By.cssSelector("input[class=\"qty-input\"]"));
+    }
 }
